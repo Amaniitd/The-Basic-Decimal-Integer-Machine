@@ -32,17 +32,93 @@ fun read file=
 fun lineParser line = 
   let val tmp1 = String.tokens (fn c => c = #",") line
       val tmp2 =  Vector.fromList(tmp1)
-      val op = String.substring(Vector.sub(tmp2, 0), 1, 1)
-      val s1 = Vector.sub(tmp2, 0)
-      val s2 = Vector.sub(tmp2, 0)
-      val s3 = String.substring(Vector.sub(tmp2, 0), 0, 1)
-
+      val operator = String.substring(Vector.sub(tmp2, 0), 1, String.size(Vector.sub(tmp2, 0)) -1 )
+      val opd1 = Vector.sub(tmp2, 1)
+      val opd2 = Vector.sub(tmp2, 2)
+      val tgt = String.substring(Vector.sub(tmp2, 3), 0, String.size(Vector.sub(tmp2, 3)) -1 )
 
   in
-    print(op)
+    Vector.fromList(operator::opd1::opd2::tgt::nil)
   end;
 
 
+
+
+fun LastlineParser line = 
+  let val tmp1 = String.tokens (fn c => c = #",") line
+      val tmp2 =  Vector.fromList(tmp1)
+      val operator = String.substring(Vector.sub(tmp2, 0), 1, String.size(Vector.sub(tmp2, 0)) -1 )
+      val opd1 = Vector.sub(tmp2, 1)
+      val opd2 = Vector.sub(tmp2, 2)
+      val tgt = String.substring(Vector.sub(tmp2, 3), 0, String.size(Vector.sub(tmp2, 3)) -1 )
+
+  in
+    Vector.fromList(operator::opd1::opd2::tgt::nil)
+  end;
+
+fun operatorFunction (operator, opd1, opd2, tgt) = 
+  if operator = "0" then
+    ~2
+  else 
+  if operator = "1" then(
+    Array.update(mem, valOf(Int.fromString(tgt)), valOf(Int.fromString(opd1)));
+    ~1
+  )
+  else if operator = "2" then(
+    Array.update(mem, valOf(Int.fromString(tgt)), Vector.sub(mem, valOf(Int.fromString(opd1))));
+    ~1
+  )
+  else if operator = "3" then(
+    ~1
+  )
+  else if operator = "4" then(
+
+  )
+  else if operator = "5" then(
+
+  )
+  else if operator = "6" then(
+    Array.update(mem, valOf(Int.fromString(tgt)), Vector.sub(mem, valOf(Int.fromString(opd1))) + Vector.sub(mem, valOf(Int.fromString(opd2))));
+    ~1
+  )
+  else if operator = "7" then(
+    Array.update(mem, valOf(Int.fromString(tgt)), Vector.sub(mem, valOf(Int.fromString(opd1))) - Vector.sub(mem, valOf(Int.fromString(opd2))));
+    ~1
+  )
+  else if operator = "8" then(
+    Array.update(mem, valOf(Int.fromString(tgt)), Vector.sub(mem, valOf(Int.fromString(opd1))) * Vector.sub(mem, valOf(Int.fromString(opd2))));
+    ~1
+  )
+  else if operator = "9" then(
+
+  )
+  else if operator = "10" then(
+
+  )
+  else if operator = "11" then(
+
+  )
+  else if operator = "12" then(
+
+  )
+  else if operator = "13" then(
+
+  )
+  else if operator = "14" then(
+
+  )
+  else if operator = "15" then(
+
+  )
+  else if operator = "16" then(
+
+  )
+  else
+    ~1
+
+
+
+  
 
 
 fun interpret (filename) = 
@@ -59,3 +135,5 @@ fun interpret (filename) =
     end;
 
 interpret("ap.bdim");
+operatorFunction("1", "2", "2", "2");
+Array.sub(mem, 2);

@@ -4,9 +4,18 @@
 val maxMemSize = 10
 val mem = Array.tabulate(maxMemSize, fn c => 0)
 
+
+
+
+(* Debugger functions *)
+
 fun print1s(s) = ((print(Char.toString s ^" ");true))
 fun printsl([]) = true
         | printsl(h::t) = print1s(h) andalso printsl(t)
+
+
+
+
 
 fun read file=
     let val input=TextIO.openIn file
@@ -18,11 +27,22 @@ fun read file=
     end;
 
 
+
+
 fun lineParser line = 
-  let val chars = explode line 
+  let val tmp1 = String.tokens (fn c => c = #",") line
+      val tmp2 =  Vector.fromList(tmp1)
+      val op = String.substring(Vector.sub(tmp2, 0), 1, 1)
+      val s1 = Vector.sub(tmp2, 0)
+      val s2 = Vector.sub(tmp2, 0)
+      val s3 = String.substring(Vector.sub(tmp2, 0), 0, 1)
+
+
   in
-    printsl(chars)
+    print(op)
   end;
+
+
 
 
 fun interpret (filename) = 

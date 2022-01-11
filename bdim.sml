@@ -15,6 +15,26 @@ fun printsl([]) = true
 
 
 
+fun isBool value = 
+  if value = 1 orelse value = 0 then
+    true
+  else 
+    false
+
+fun numToBool value = 
+  if value = 1 then
+    true
+  else
+    false
+
+
+
+fun isInt value = 
+  let val valueCharList = explode value
+  in 
+    length (List.filter (Char.isDigit) valueCharList) = length valueCharList
+  end;
+
 
 
 fun read file=

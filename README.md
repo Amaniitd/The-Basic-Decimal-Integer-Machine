@@ -40,5 +40,6 @@ to design an interpreter which reads in the instructions (one per line) from a p
   machne allows for the integer dataype (e.g. valOf(Int.maxInt)).
   
   
-  ##OP CODES
+  ## OP CODES
+  
   ![op codes](https://user-images.githubusercontent.com/58507582/149345102-6a0d6d67-ef55-420a-89b6-1dbf932f121b.png)

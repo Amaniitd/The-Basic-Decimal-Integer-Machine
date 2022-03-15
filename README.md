@@ -1,7 +1,7 @@
 # Assignmant: The Basic Decimal Integer Machine
 The following table is the instruction set of a very Basic Decimal Integer Machine (BDIM) which may be used to
-do simple integer computations. There are no other data types and no structured data types. You are supposed
-to design an interpreter which reads in the instructions (one per line) from a program file <filename>.bdim.
+do simple integer computations. There are no other data types and no structured data types. An interpreter which 
+reads in the instructions (one per line) from a program file <filename>.bdim.
 
   - We use positive integer op-codes. The special opcode 0 denotes a halt instruction. Programs halt on
   seeing this opcode.
